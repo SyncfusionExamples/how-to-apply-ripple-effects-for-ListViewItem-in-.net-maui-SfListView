@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:syncfusion="clr-namespace:Syncfusion.Maui.ListView;assembly=Syncfusion.Maui.ListView"
+             xmlns:core="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"
+             xmlns:local="clr-namespace:ListViewMaui"
+             x:Class="ListViewMaui.MainPage">
+    <ContentPage.BindingContext>
+        <local:BookInfoRepository />
+    </ContentPage.BindingContext>
+    <Grid>
+        <syncfusion:SfListView x:Name="listView"
+                               ItemsSource="{Binding BookInfo}"
+                               ItemSize="100">
+            <syncfusion:SfListView.ItemTemplate>
+                <DataTemplate>
+                    <core:SfEffectsView ShouldIgnoreTouches="false"
+                                        HighlightBackground="#FF0000"
+                                        LongPressEffects="Scale,Selection"
+                                        RippleAnimationDuration="800"
+                                        TouchDownEffects="Highlight,Ripple">
+                        <Grid Padding="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="0.4*" />
+                                <RowDefinition Height="0.6*" />
+                            </Grid.RowDefinitions>
+                            <Label Text="{Binding BookName}"
+                                   FontAttributes="Bold"
+                                   TextColor="Teal"
+                                   FontSize="21" />
+                            <Label Grid.Row="1"
+                                   Text="{Binding BookDescription}"
+                                   TextColor="Teal"
+                                   FontSize="15" />
+                        </Grid>
+                    </core:SfEffectsView>
+                </DataTemplate>
+            </syncfusion:SfListView.ItemTemplate>
+        </syncfusion:SfListView>
+    </Grid>
+</ContentPage>
